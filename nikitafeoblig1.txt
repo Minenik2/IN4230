@@ -1,0 +1,499 @@
+
+
+
+## 1. What does this function return?
+
+    1  int f1(int a, int b) {
+    2      return (a>b?a:b);
+    3  }
+
+A. compiler error
+
+B. the smaller value of the two passed parameters
+
+C. the greater value of the two passed parameters
+
+D. runtime error
+
+Answer: C
+
+Explanation: the ? works as an if statement inside the paranteses, meaning that if a is greater than b
+it will return A, however if B is greater than A it will return b written by the latter half using the colum :
+if both are equal it will return B (a and b is the same but it will return the B variable because 
+of the statement a>b is false and it will output B then)
+
+
+## 2. Which is not a correct way to declare a string variable?
+
+A. `char str = "Hei IN3230";`
+
+B. `char *str = "Hei IN3230";`
+
+C. `char str[20] = {'H', 'e', 'i', ' ', 'I', 'N', '3', '2', '3', '0', '\0'};`
+
+D. `char str[] = "Hei IN3230";`
+
+Answer: A
+
+Explanation: the way "char str" works in C is that it will only store a single characcter not a whole string
+
+
+## 3. Which function do you use to deallocate memory?
+
+A. `dalloc()`
+
+B. `release()`
+
+C. `free()`
+
+D. `dealloc()`
+
+Answer: C
+
+Explanation: it's the standart function for deallocating memory
+
+
+## 4. In which segment does dynamic memory allocation take place?
+
+A. BSS segment
+
+B. stack
+
+C. data segment
+
+D. heap
+
+Answer: D
+
+Explanation: all the other segments (as well as the stack) are managed by the system
+
+
+## 5. What is not a valid command with this declaration?
+
+    1 char *string[20] = {"one", "two", "three"};
+
+A. `printf("%c", string[1][2]);`
+
+B. `printf("%s", string[1][2]);`
+
+C. `printf(string[1]);`
+
+D. `printf("%s", string[1]);`
+
+Answer: B
+
+Explanation: the first part in the parantestes wants a pointer to a string but it is given a character instead,
+why that's not the case for D is because it is given a pointer to a string by not having an extra brackets
+
+
+## 6. Void pointer `vptr` is assigned the address of float variable `g`. What is a valid way to dereference `vptr` to assign its pointed value to a float variable named `f` later in the program?
+
+    1  float g;
+    2  void *vptr = &g;
+
+A. `f = *(float)vptr;`
+
+B. `f = (float)*vptr;`
+
+C. `f = *(float *)vptr;`
+
+D. `f = (float *)vptr;`
+
+Answer: C
+
+Explanation: you first need to cast it to a float* and the dereference it with *, 
+
+
+## 7. What does the `strcmp(str1, str2);` function return?
+
+A.
+• true (1) if str1 and str2 are the same
+• NULL if str1 and str2 are not the same
+
+B.
+• 0 if str1 and str2 are the same
+• a negative number if str1 is less than str2
+• a positive number if str1 is greater than str2
+
+C.
+• true (1) if str1 and str2 are the same
+• false (0) if str1 and str2 are not the same
+
+D.
+• 0 if str1 and str2 are the same
+• a negative number if str2 is less than str1
+• a positive number if str2 is greater than str1
+
+Answer: B
+
+Explanation: strcmp() is used to compare two strings,
+it will return 0 if the strings are identical and the only anwers with that is B or D
+D is incorrect because it will not return a negative number if str2 is less than st1
+
+
+## 8. How many times does the code inside the while loop get executed in this program?
+
+    1  void main() {
+    2  int x=1;
+    3      while (x++<100) {
+    4          x*=x;
+    5          if (×<10) continue;
+    6          if (x>50) break;
+    7      }
+    8  }
+
+A. 5
+
+B. 50
+
+C. 100
+
+D. 3
+
+Answer: D
+
+Explanation: x*=x is the *= operator meaning that x = x * x,
+x = 1 is checked in the while loop if it's less than 100 then x is incremented by 1
+then x = 2 * 2 = 4
+4 < 10 continue to second loop
+ 4 < 100 is checked then is incremented to 5
+then x = 5*5
+then passes the x < 10 as false
+then passes x > 50 as false
+last iteration
+25 < 100
+26
+26*26
+676 is greater than 50 so it breaks in the 3rd loop
+
+ 
+
+
+## 9. Which choice is an include guard for the header file mylib.h?
+
+A.
+```
+#ifndef MYLIB_H
+#define MYLIB_H
+//mylib.h content
+#endif /* MYLIB_H */
+```
+
+B.
+```
+#define MYLIB_H
+#include "mylib.h"
+#undef MYLIB_H
+```
+
+C.
+```
+#ifdef MYLIB_H
+#define MYLIB_H
+//mylib.h content
+#endif /* MYLIB_H */
+```
+
+D.
+```
+#ifdef MYLIB_H
+#undef MYLIB_H
+//mylib.h content
+#endif /* MYLIB_H */
+```
+
+Answer: A
+
+Explanation: #ifndef checks if MYLIB_H has not been defined,
+if it has not been defined the code up to #endif will be included
+meaning that it will define it
+
+
+## 10. What is the sequence printed by the following program?
+
+    1  #include <stdio.h>
+    2
+    3  void print_3_ints(int *ip)
+    4  {
+    5      printf("%d %d %d ", ip[0], ip[1], ip[2]);
+    6  }
+    7
+    8
+    9  int main(void)
+    10 {
+    11     int array[] = { 5, 23, 119, 17 };
+    12     int *p, *q, d;
+    13
+    14     p = array; q = p + 1;
+    15
+    16     print_3_ints(q);
+    17
+    18     d = *(p++);
+    19     printf("%d ", d);
+    20
+    21     d = ++(*p);
+    22     printf("%d ", d);
+    23
+    24     printf("\n");
+    25     return 0;
+    26 }
+
+A. 23 119 17 5 24
+
+B. 23 119 17 23 24
+
+C. 24 120 18 6 25
+
+D. 25 120 18 25 26
+
+Answer: A
+
+Explanation: q points to array[1] so it will print values starting from array[1]
+in the print_3_ints(q) method
+ip[0] = array[1] = 23
+ip[1] = array[2] = 119
+ip[2] = array[3] = 17
+
+by process of elimination the answer is between
+A and B
+it cannot be b because the line 18 dereferences the array[0] leaving only 5
+it increments the point to array[1] only after the assigment of d.
+meaning that d new value at line 18 will be 5
+thus the answer must be 23 119 17 5 etc
+
+
+## 11. What is the output of the following program?
+
+    1  #include <stdio.h>
+    2
+    3  void func(int *ptr)
+    4  {
+    5      *ptr = 30;
+    6  }
+    7
+    8  int main()
+    9  {
+    10     int y = 20;
+    11     func(&y);
+    12     printf("%d\n", y);
+    13
+    14     return 0;
+    15 }
+
+A. 20
+
+B. 30
+
+C. Compiler error
+
+D. Runtime error
+
+Answer: B
+
+Explanation: &y is the address of y so the function recieves a pointer to y
+inside the function the ptr points to y in main()
+then the *ptr = 30 sets the value the ptr points to (y) to 30
+the value of y is 30 because the function modified it through the pointer
+then the printf will output 30
+
+
+## 12. What is the output of the following program?
+
+    1  #include <stdio.h>
+    2  #include <stdlib.h>
+    3
+    4  int main()
+    5  {
+    6      int i, numbers[1];
+    7      numbers[0] = 15;
+    8      free(numbers);
+    9      printf("Stored integers are ");
+    10     printf("numbers[%d] = %d ", 0, numbers[0]);
+    11
+    12     return 0;
+    13 }
+
+A. Runtime error
+
+B. Compilation error
+
+C. 0
+
+D. Garbage value
+
+Answer: A
+
+Explanation: numbers was allocated on the stack and not dinamically allocated so calling free(numbers) will lead
+to the runtime error
+
+
+## 13. What is the error of this program?
+
+    1  #include <stdio.h>
+    2  #include <stdlib.h>
+    3  #include <string.h>
+	4
+    5  int main()
+    6  {
+    7      char *ptr;
+    8      *ptr = (char)malloc(8);
+    9      strcpy(ptr, "RAM");
+    10     printf("%s", ptr);
+    11     free(ptr);
+    12     return 0;
+    13 }
+
+A. Error in `strcpy()` statement
+
+B. Error in `*ptr = (char)malloc(8);`
+
+C. Error in `free(ptr);`
+
+D. No error
+
+Answer: B
+
+Explanation: The line 8 is incorrect because malloc returns a void* which should be cast to char*
+and assignet to ptr, ptr is not initialized so dereferncing it with *ptr makes no sense. 
+everything else would be correct if the ptr was allocated and initialized correctly.
+
+
+## 14. What is the output of the following program?
+
+    1  #include <stdio.h>
+    2
+    3  struct result{
+    4      char sub[20];
+    5      int marks;
+    6  };
+    7
+    8  int main()
+    9  {
+    10     struct result res[] = {
+    11          {"IN3230",100},
+    12    		{"IN4230",90},
+    13    		{"Norsk",85}};
+    14
+    15     printf("%s ", res[1].sub);
+    16
+    17     printf("%d\n", (*(res+2)).marks);
+    18
+    19     return 0;
+    20 }
+
+A. IN3230 100
+
+B. IN4230 85
+
+C. IN4230 90
+
+D. Norsk 100
+
+Answer: B
+
+Explanation: first the code makes a structure called "result" with two memebers (char) sub and (int) marks.
+the first print prints the sub field of the second element which is "IN4230"
+res is an array of struct result so res + 2 will point to the third element then it dereferences the pointer
+to acess res[2].marks which is 85 then the complete output will be IN4230 85
+
+
+
+## 15. What is the output of this code snippet?
+
+    1  void main()
+    2  {
+    3      struct bitfields {
+    4          int bits_1: 2;
+    5          int bits_2: 9;
+    6          int bits_3: 6;
+    7          int bits_4: 1;
+    8      }bit;
+    9
+    10     printf("%d\n", sizeof(bit));
+    11 }
+
+A. 2
+
+B. 3
+
+C. 4
+
+D. 0
+
+Answer: C
+
+Explanation: It depends on the rules of the system, typically on most systems int bit fields are aligned to
+the size of an int which is often 4 bytes (32 bits) even though the number of bits in the structure is less it is generally rounded to the nearest multiple of 4 bytes on most/modern machines/systems.
+
+
+## 16. In which line is the BUG in the following program?
+
+    1  #include <stdio.h>
+    2
+    3  int main()
+    4  {
+    5      int a, *ptr;
+    6      a = 25;
+    7      *ptr = a + 5;
+    8
+    9      return 0;
+    10 }
+
+Answer: *ptr = a +5
+
+Explanation: the line tries to dereference ptr and assign the result of a + 5
+to the location pointed by ptr, the bug happens as an unitialized pointer because prt is
+declared but not initialized. Before dereferencing the pointer it should be assigned to a valid address.
+
+
+## 17. In which line is the BUG in the following program?
+
+    1  #include <stdio.h>
+    2  struct var {
+    3      int value;
+    4      int *address;
+    5  };
+    6
+    7  int main()
+    8  {
+    9      struct var y;
+    10     int a = 10;
+    11     int *ptr = &a;
+    12
+    13     y.value = *ptr;
+    14     (&y)->address = ptr;
+    15
+    16     printf("value %d\n", y.value);
+    17     printf("address %p\n", y->address);
+    18     return 0;
+    19  }
+
+Answer: printf("address %p\n", y->address);
+
+Explanation: because y is a structure and not a pointer to a structure
+the address in the struct var should be accessed with the . operator instead of arrows
+
+
+## 18. What are the two mistakes in the following program?
+
+    1   #include <stdio.h>
+    2
+    3   int main () {
+    4       const char src[8] = "IN3230";
+    5       char dest[8];
+    6
+    7       strcpy(dest, "Hellllo");
+    8
+    9       memcpy(dest, src, strlen(src));
+    10
+	11      printf("%s\n", dest);
+    12      return(0);
+    13  }
+
+Answer: line 4 and line 9
+
+Explanation: there's a potential buffer overflow at line 4 because strcpy copies the hello string into dest
+without checking if the buffer length is big enough.
+secondly line 9
+the memcpy function does not take into account the "/0" null termination of a string meaning that it may not
+be a valid Cstring.
